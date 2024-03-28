@@ -7,7 +7,7 @@ This repository contains the solution to the [Praetorian Tech Challenge - Master
 
 - **API Interaction**: Automates requests to the Mastermind game API for game state management, level progression, and guess submission.
 - **Algorithmic Solving**: Employs strategies to efficiently solve levels, including permutation and combination logic.
-- **Performance Metrics**: Displays the time taken and the number of guesses required to solve each level, providing insights into the algorithm's efficiency.
+- **Performance Metrics**: Displays the time taken and the number of guesses required to complete all of the levels, providing insights into the algorithm's efficiency.
 - **Multiprocessing**: Utilizes Python's multiprocessing capabilities to leverage multiple CPU cores for faster computation and solution finding.
 
 ## Installation

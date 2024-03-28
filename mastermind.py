@@ -70,7 +70,7 @@ def run(CORES):
     while True:
         iterations += 1
         for key in state:
-            if key in ['message'] or iterations == 0:
+            if key in ['message', 'roundsLeft'] or iterations == 0:
                 if key == 'message':
                     print(state['message'])
                     print('')

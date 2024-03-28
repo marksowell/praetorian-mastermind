@@ -1,7 +1,7 @@
 # Praetorian Mastermind
 
-## Description
-This repository contains the solution to the Praetorian Tech Challenge - Mastermind. It includes a Python-based interface for interacting with the challenge's API, managing game states, and algorithmically solving the Mastermind game.
+## Introduction
+This repository contains the solution to the [Praetorian Tech Challenge - Mastermind](https://www.praetorian.com/challenges/mastermind/). It includes a Python-based interface for interacting with the challenge's API, managing game states, and algorithmically solving the Mastermind game.
 
 ## Features
 

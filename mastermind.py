@@ -6,6 +6,9 @@ from random import sample
 import interface
 import time
 
+class RestartException(Exception):
+    pass
+
 def get_core_count():
     return multiprocessing.cpu_count()
 
@@ -57,7 +60,7 @@ def best_move(S):
         return []
     return S[0]
 
-def run(CORES):
+def run(CORES, reset_count):
     start_time = time.time()  # Start timing the execution
     iterations = -1
     level = 1
@@ -84,7 +87,7 @@ def run(CORES):
                         c_hash = str(interface.get_hash())
                         print("Hash: " + c_hash)
                         end_time = time.time()  # End timing
-                        print(f"Script took {end_time - start_time:.2f} seconds and {guesses_made} guesses to solve and get the hash.")
+                        print(f"The solver took {end_time - start_time:.2f} seconds, {guesses_made} guesses, and {reset_count} resets to solve and get the hash.")
                         with open('hash.txt', 'a+') as f:
                             f.write("\n")
                             f.write(c_hash)
@@ -156,13 +159,18 @@ def run(CORES):
                 current_guess = best_move(S)
                 state = interface.submit_guess(level, current_guess)
         else:
-            print("Error: No 'response' in state. State was:", state)
-            return
+            raise RestartException
 
 def main(CORES):
-    interface.reset_game()
-    run(CORES)
-    return 0
+    reset_count = 0
+    while True:
+        try:
+            interface.reset_game()
+            run(CORES, reset_count)
+            break
+        except RestartException:
+            print("Restarting due to error state...")
+            reset_count += 1
 
 if __name__ == '__main__':
     multiprocessing.set_start_method('fork')
